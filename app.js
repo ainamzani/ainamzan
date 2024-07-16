@@ -9,7 +9,7 @@ import { VRButton } from './libs/VRButton.js';
 import { CanvasUI } from './libs/CanvasUI.js';
 import { GazeController } from './libs/GazeController.js'
 import { XRControllerModelFactory } from './libs/three/jsm/XRControllerModelFactory.js';
-import { AudioContext } from './libs/webaudio.module.js';
+
 
 class App{
 	constructor(){
@@ -21,7 +21,7 @@ class App{
 		this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 500 );
 		this.camera.position.set( 0, 1.6, 0 );
 
-		 this.audioCtx = new AudioContext();
+
   
         
         this.dolly = new THREE.Object3D(  );
@@ -303,30 +303,7 @@ class App{
         this.dolly.quaternion.copy( quaternion );
 	}
 
-	//AUDIO
-loadBackgroundMusic(url) {
-  fetch(url)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => this.audioCtx.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      // Create audio source and connect to gain node (optional for volume control)
-      const source = this.audioCtx.createBufferSource();
-      source.buffer = audioBuffer;
-      const gainNode = this.audioCtx.createGain();
-      source.connect(gainNode);
-      gainNode.connect(this.audioCtx.destination);
 
-      // Play the audio in a loop (optional)
-      source.loop = true;
-      source.start(0);
-    })
-    .catch(error => console.error('Error loading audio:', error));
-}
-stopBackgroundMusic() {
-  if (this.source) {
-    this.source.stop();
-  }
-}
     get selectPressed(){
         return ( this.controllers !== undefined && (this.controllers[0].userData.selectPressed || this.controllers[1].userData.selectPressed) );    
     }
