@@ -63,15 +63,15 @@ class App{
         this.immersive = false;
         
         const self = this;
-		//AUDIO
-		 this.audioCtx = new AudioContext();
-		
+	
         fetch('./college.json')
             .then(response => response.json())
             .then(obj =>{
                 self.boardShown = '';
                 self.boardData = obj;
             });
+		//AUDIO
+		 this.audioCtx = new AudioContext();
 	}
 	
     setEnvironment(){
