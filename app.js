@@ -357,11 +357,11 @@ class App{
                 }
             }
         }
-this.loadBackgroundMusic('Users\User\Documents\GitHub\ainamzan\College Sound.mp3');
+this.loadBackgroundMusic('Users\User\Documents\GitHub\ainamzan\ainamzan\College Sound.mp3');
 
 
-loadBackgroundMusic(url) {
-  fetch(url)
+loadBackgroundMusic('Users\User\Documents\GitHub\ainamzan\ainamzan\College Sound.mp3') {
+  fetch('Users\User\Documents\GitHub\ainamzan\ainamzan\College Sound.mp3')
     .then(response => response.arrayBuffer())
     .then(arrayBuffer => this.audioCtx.decodeAudioData(arrayBuffer))
     .then(audioBuffer => {
