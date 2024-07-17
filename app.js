@@ -359,7 +359,8 @@ class App{
         }
 this.loadBackgroundMusic('Users\User\Documents\GitHub\ainamzan\College Sound.mp3');
 
-		loadBackgroundMusic(url) {
+
+loadBackgroundMusic(url) {
   fetch(url)
     .then(response => response.arrayBuffer())
     .then(arrayBuffer => this.audioCtx.decodeAudioData(arrayBuffer))
