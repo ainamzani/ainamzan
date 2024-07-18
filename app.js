@@ -9,6 +9,7 @@ import { VRButton } from './libs/VRButton.js';
 import { CanvasUI } from './libs/CanvasUI.js';
 import { GazeController } from './libs/GazeController.js'
 import { XRControllerModelFactory } from './libs/three/jsm/XRControllerModelFactory.js';
+import { AudioContext } from './libs/webaudio.module.js';
 
 class App{
 	constructor(){
@@ -65,6 +66,8 @@ class App{
                 self.boardShown = '';
                 self.boardData = obj;
             });
+		    //Audio
+        this.audioCtx = new AudioContext();
 	}
 	
     setEnvironment(){
@@ -358,6 +361,22 @@ class App{
         this.stats.update();
 		this.renderer.render(this.scene, this.camera);
 	}
+	  loadBackgroundMusic('.\College_Sound.mp3') {
+        fetch('.\College_Sound.mp3')
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => this.audioCtx.decodeAudioData(arrayBuffer))
+            .then(audioBuffer => {
+                const source = this.audioCtx.createBufferSource();
+                source.buffer = audioBuffer;
+                const gainNode = this.audioCtx.createGain(); // Optional for volume control
+                source.connect(gainNode);
+                gainNode.connect(this.audioCtx.destination);
+
+                source.loop = true; // Set to loop the music
+                source.start(0);
+            })
+            .catch(error => console.error('Error loading audio:', error));
+    }
 }
 
 export { App };
