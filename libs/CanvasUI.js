@@ -1,4 +1,4 @@
-ifimport { Mesh, 
+import { Mesh, 
         CanvasTexture, 
         MeshBasicMaterial, 
         PlaneGeometry, 
