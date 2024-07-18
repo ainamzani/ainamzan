@@ -42,8 +42,8 @@ class CanvasUI{
                 fontSize:30, 
                 padding:20, 
                 backgroundColor: '#000', 
-                fontColor:'#264414', 
-                borderRadius: 6
+                fontColor:'#cdebbc', 
+                borderRadius: 8
             }
         }
 		this.config = (config===undefined) ? defaultconfig : config;
