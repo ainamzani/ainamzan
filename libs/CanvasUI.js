@@ -38,7 +38,7 @@ class CanvasUI{
             height: 512,
             opacity: 0.7,
             body:{
-                fontFamily:'sans-serif', 
+                fontFamily:'Arial', 
                 fontSize:30, 
                 padding:20, 
                 backgroundColor: '#000', 
