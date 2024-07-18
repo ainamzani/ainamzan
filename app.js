@@ -7,7 +7,7 @@ import { Stats } from './libs/stats.module.js';
 import { LoadingBar } from './libs/LoadingBar.js';
 import { VRButton } from './libs/VRButton.js';
 import { CanvasUI } from './libs/CanvasUI.js';
-import { GazeController } from './libs/GazeController.js'
+import { GazeController } from './libs/GazeController.js';
 import { XRControllerModelFactory } from './libs/three/jsm/XRControllerModelFactory.js';
 
 class App{
