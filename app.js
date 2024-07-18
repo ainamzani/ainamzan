@@ -9,7 +9,7 @@ import { VRButton } from './libs/VRButton.js';
 import { CanvasUI } from './libs/CanvasUI.js';
 import { GazeController } from './libs/GazeController.js'
 import { XRControllerModelFactory } from './libs/three/jsm/XRControllerModelFactory.js';
-import { AudioContext } from './libs/webaudio.module.js';
+
 
 
 class App{
@@ -70,8 +70,7 @@ class App{
                 self.boardShown = '';
                 self.boardData = obj;
             });
-		//AUDIO
-		 this.audioCtx = new AudioContext();
+		
 	}
 	
     setEnvironment(){
@@ -357,25 +356,9 @@ class App{
                 }
             }
         }
-this.loadBackgroundMusic('Users\User\Documents\GitHub\ainamzan\ainamzan\College Sound.mp3');
 
 
-loadBackgroundMusic('Users\User\Documents\GitHub\ainamzan\ainamzan\College Sound.mp3') {
-  fetch('Users\User\Documents\GitHub\ainamzan\ainamzan\College Sound.mp3')
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => this.audioCtx.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      const source = this.audioCtx.createBufferSource();
-      source.buffer = audioBuffer;
-      const gainNode = this.audioCtx.createGain(); // Optional for volume control
-      source.connect(gainNode);
-      gainNode.connect(this.audioCtx.destination);
 
-      source.loop = true; // Set to loop the music
-      source.start(0);
-    })
-    .catch(error => console.error('Error loading audio:', error));
-}
 		
         
         if ( this.immersive != this.renderer.xr.isPresenting){
