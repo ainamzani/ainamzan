@@ -8,7 +8,7 @@ class LoadingBar{
 		this.domElement.style.height = '100%';
 		//this.domElement.style.background = '#DDE255';
 		this.domElement.style.backgroundImage =  ('./css/favicon/Sparkle.jpg/'); 
-		this.domElement.style.backgroundSize = 'cover'; 
+		//this.domElement.style.backgroundSize = 'cover'; 
 		this.domElement.style.backgroundRepeat = 'repeat'; 
 		this.domElement.style.opacity = '0.7';
 		this.domElement.style.display = 'flex';
