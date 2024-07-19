@@ -375,7 +375,7 @@ class App{
     }
 
     loadBackgroundMusic() {
-        fetch('.\assets\College_Sound.mp3')
+        fetch('.\College_Sound.mp3')
             .then(response => response.arrayBuffer())
             .then(arrayBuffer => this.audioCtx.decodeAudioData(arrayBuffer))
             .then(audioBuffer => {
