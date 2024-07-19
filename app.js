@@ -9,9 +9,6 @@ import { VRButton } from './libs/VRButton.js';
 import { CanvasUI } from './libs/CanvasUI.js';
 import { GazeController } from './libs/GazeController.js'
 import { XRControllerModelFactory } from './libs/three/jsm/XRControllerModelFactory.js';
-import { AudioContext } from './libs/webaudio.module.js';
-
-
 
 class App{
 	constructor(){
@@ -22,9 +19,6 @@ class App{
         
 		this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 500 );
 		this.camera.position.set( 0, 1.6, 0 );
-
-
-  
         
         this.dolly = new THREE.Object3D(  );
         this.dolly.position.set(0, 0, 10);
@@ -64,17 +58,13 @@ class App{
         this.immersive = false;
         
         const self = this;
-	
+        
         fetch('./college.json')
             .then(response => response.json())
             .then(obj =>{
                 self.boardShown = '';
                 self.boardData = obj;
             });
-
-            //Audio
-        this.audioCtx = new AudioContext();
-		
 	}
 	
     setEnvironment(){
@@ -308,8 +298,7 @@ class App{
         //Restore the original rotation
         this.dolly.quaternion.copy( quaternion );
 	}
-
-
+		
     get selectPressed(){
         return ( this.controllers !== undefined && (this.controllers[0].userData.selectPressed || this.controllers[1].userData.selectPressed) );    
     }
@@ -360,10 +349,6 @@ class App{
                 }
             }
         }
-
-
-
-		
         
         if ( this.immersive != this.renderer.xr.isPresenting){
             this.resize();
@@ -372,25 +357,7 @@ class App{
         
         this.stats.update();
 		this.renderer.render(this.scene, this.camera);
-    }
-
-    loadBackgroundMusic() {
-        fetch('.\College_Sound.mp3')
-            .then(response => response.arrayBuffer())
-            .then(arrayBuffer => this.audioCtx.decodeAudioData(arrayBuffer))
-            .then(audioBuffer => {
-                const source = this.audioCtx.createBufferSource();
-                source.buffer = audioBuffer;
-                const gainNode = this.audioCtx.createGain(); // Optional for volume control
-                source.connect(gainNode);
-                gainNode.connect(this.audioCtx.destination);
-
-                source.loop = true; // Set to loop the music
-                source.start(0);
-            })
-            .catch(error => console.error('Error loading audio:', error));
-    }
-
+	}
 }
 
 export { App };
